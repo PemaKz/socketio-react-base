@@ -1,0 +1,20 @@
+{
+  "username": "Username",
+  "password": "Password",
+  "rememberMe": "Remember Me",
+  "forgotPassword": "Forgot Password?",
+  "signIn": "Sign In",
+  "notAMember": "Not a member?",
+  "registerNow": "Register Now",
+  "signInToYourAccount": "Sign in to your account",
+  "loginSuccess": "Login Success",
+  "usernameRequired": "Username is required",
+  "passwordRequired": "Password is required",
+  "registerSuccess": "Register Success",
+  "registerYourAccount": "Register your account",
+  "register": "Register",
+  "alreadyHaveAnAccount": "Already have an account?",
+  "loginNow": "Login Now",
+  "dashboard": "Dashboard",
+  "logout": "Logout"
+}

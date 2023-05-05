@@ -1,0 +1,20 @@
+{
+  "username": "Nombre de usuario",
+  "password": "Contraseña",
+  "rememberMe": "Recordar",
+  "forgotPassword": "¿Olvidaste tu contraseña?",
+  "signIn": "Iniciar sesión",
+  "notAMember": "¿No eres miembro?",
+  "registerNow": "Regístrate ahora",
+  "signInToYourAccount": "Inicia sesión en tu cuenta",
+  "loginSuccess": "¡Sesion Iniciada!",
+  "usernameRequired": "Nombre de usuario requerido",
+  "passwordRequired": "Contraseña requerida",
+  "registerSuccess": "¡Registro exitoso!",
+  "registerYourAccount": "Registra tu cuenta",
+  "register": "Registrarse",
+  "alreadyHaveAnAccount": "¿Ya tienes una cuenta?",
+  "loginNow": "Inicia sesión ahora",
+  "dashboard": "Panel de control",
+  "logout": "Cerrar sesión"
+}
