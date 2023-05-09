@@ -1,11 +1,10 @@
-import { useContext, useEffect, useState } from "react";
-import { GlobalContext } from "../../context";
-import { socket } from "../../services/Socket";
+import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import DashboardLayout from "../../layouts/DashboardLayout";
-
+import { useStoreSocket, useStoreUser } from "../../hooks";
 export default function Profile(){
-  const { user } = useContext(GlobalContext)
+  const { user } = useStoreSocket()
+  const { socket } = useStoreUser();
   const [authTokens, setAuthTokens] = useState([]);
 
   useEffect(() => {

@@ -1,12 +1,12 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import {socket} from "../../services/Socket";
 import { toast } from "react-hot-toast";
-import { GlobalContext } from "../../context";
 import lang from "../../lang";
+import { useStoreUser, useStoreSocket } from "../../hooks";
 
 export default function Login() {
-  const { setUser} = useContext(GlobalContext)
+  const { setUser} = useStoreUser()
+  const { socket } = useStoreSocket();
   const [registerInfo, setRegisterInfo] = useState({ username: "", password: "" })
   const [loading, setLoading] = useState(false)
 

@@ -8,11 +8,13 @@ import NotLoggedRoute from "../middlewares/NotLoggedRoute";
 import UserRoute from "../middlewares/UserRoute";
 import NotFound from "./404";
 import Logout from "./logout";
+import AxieInfinity from "./axie-infinity";
 
 export default function Pages(){
   return (<Routes>
     <Route path="/" element={<Landing />} />
     <Route path="/home" element={<UserRoute><Home /></UserRoute>} />
+    <Route path="/axie-infinity" element={<UserRoute><AxieInfinity /></UserRoute>} />
     <Route path="/profile" element={<UserRoute><Profile /></UserRoute>} />
     <Route path="/login" element={<NotLoggedRoute><Login /></NotLoggedRoute>} />
     <Route path="/register" element={<NotLoggedRoute><Register /></NotLoggedRoute>} />

@@ -1,12 +1,12 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import {socket} from "../../services/Socket";
 import { toast } from "react-hot-toast";
-import { GlobalContext } from "../../context";
 import lang from "../../lang";
+import { useStoreUser, useStoreSocket } from "../../hooks";
 
 export default function Login() {
-  const { setUser } = useContext(GlobalContext)
+  const { setUser} = useStoreUser()
+  const { socket } = useStoreSocket();
   const [loginInfo, setLoginInfo] = useState({ username: "", password: "" })
   const [loading, setLoading] = useState(false)
 
@@ -32,9 +32,6 @@ export default function Login() {
         data = JSON.parse(data)
         if(data.action === "login"){
           if(data.success){
-            const {token, user: newUser}  = data.data
-            localStorage.setItem("token", token)
-            setUser(newUser)
             toast.success(lang("loginSuccess"))
           }else{
             toast.error(data.message)
@@ -43,7 +40,6 @@ export default function Login() {
       } catch (error) {
         console.log(error)
       }
-      console.log(data)
     })
     return () => {
       socket.off('message')

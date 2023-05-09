@@ -15,7 +15,7 @@ const loadLanguage = () => {
   return lang || 'en';
 }
 
-export const socket = io(URL, {
+export const socketService = io(URL, {
   autoConnect: true,
   query: {
     authToken: getAuthToken(),

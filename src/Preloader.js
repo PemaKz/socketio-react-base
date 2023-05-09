@@ -1,12 +1,11 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import WebFont from "webfontloader";
 import Preload from "./components/Preload";
-import { socket } from "./services/Socket";
-import { GlobalContext } from "./context";
-import { toast } from "react-hot-toast";
+import { socketService } from "./services/Socket";
+import { useStoreSocket } from './hooks'
 
 export default function Preloader({children}){
-  const { setUser } = useContext(GlobalContext)
+  const { setSocket } = useStoreSocket();
   const [loading, setLoading] = useState(true);
 
   const loadFonts = async () => {
@@ -19,8 +18,8 @@ export default function Preloader({children}){
 
   useEffect(() => {
     loadFonts();
-    console.log('Preloader');
-    socket.connect();
+    const socket = socketService;
+    setSocket(socket);
     function onConnect() {
       console.log('connected');
       if(localStorage.getItem("token")){
@@ -36,14 +35,11 @@ export default function Preloader({children}){
     }
 
     function onMessageEvent(msg) {
+      msg = JSON.parse(msg)
       try{
-        msg = JSON.parse(msg)
-        if(msg.action === "checkUser"){
-          if(msg.success){
-            const user  = msg.data
-            setUser(user)
-          } else localStorage.removeItem("token")
-          loading && setLoading(false);
+        if(msg.action === "checkUser") {
+          loading && setLoading(false)
+          if(!msg.success) localStorage.removeItem("token")
         }
       } catch (error) {
         console.log(error)
@@ -65,6 +61,7 @@ export default function Preloader({children}){
       socket.off('disconnect', onDisconnect);
       socket.off('message', onMessageEvent);
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   if(loading) return <Preload />

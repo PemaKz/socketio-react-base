@@ -1,11 +1,10 @@
-import { useContext, useEffect } from "react";
-import { GlobalContext } from "../../context";
+import { useEffect } from "react";
 import { Navigate } from "react-router-dom";
-import { socket } from "../../services/Socket";
-
+import { useStoreUser, useStoreSocket } from "../../hooks";
 
 export default function Logout(){
-  const { setUser} = useContext(GlobalContext);
+  const { setUser} = useStoreUser()
+  const { socket } = useStoreSocket();
 
   useEffect(() => {
     setUser(null);
